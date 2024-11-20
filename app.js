@@ -1,5 +1,18 @@
 const btnEl = document.querySelector(".btn");
 const justNumEl = document.querySelector(".phone-number");
+const sidebarEl = document.querySelector(".sidebar");
+const overlayEl = document.querySelector(".overlay");
+
+function openSidebar() {
+  sidebarEl.classList.add("show");
+  overlayEl.classList.add("show");
+  renderPhoneNumbersList();
+}
+
+function closeSidebar() {
+  sidebarEl.classList.remove("show");
+  overlayEl.classList.remove("show");
+}
 
 const loadPhoneNumbers = () => {
   const storedNumbers = localStorage.getItem("phoneNumbers");
@@ -20,7 +33,6 @@ const renderPhoneNumbersList = () => {
   }
 
   const listItems = phoneNumbers.map((number) => `<li>${number}</li>`).join("");
-
   listContainer.innerHTML = `<ul>${listItems}</ul>`;
 };
 
@@ -49,7 +61,6 @@ const addPhoneNumber = () => {
 function randomTel() {
   btnEl.setAttribute("disabled", true);
   const phoneNumbers = loadPhoneNumbers();
-  console.log(phoneNumbers);
   const interval = setInterval(() => {
     const randomIndex = Math.floor(Math.random() * phoneNumbers.length);
     justNumEl.textContent = phoneNumbers[randomIndex];

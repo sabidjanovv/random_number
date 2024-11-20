@@ -17,19 +17,54 @@ body {
   align-items: center;
   height: 100vh;
   transition: background-color 0.3s, color 0.3s;
-
-  &.dark-mode {
-    --bg-color: #222;
-    --text-color: #f0f0f0;
-    --button-bg: #555;
-    --button-hover: #777;
-    --circle-color: #ddd;
-    --circle-hover: #bbb;
-  }
 }
 
 .container {
   text-align: center;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100vh;
+  background: var(--bg-color);
+  transition: 0.5s;
+}
+
+.phone-numbers-list {
+  max-height: 80vh;
+  overflow-y: auto; 
+  padding: 10px;
+}
+
+.phone-numbers-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.phone-numbers-list li {
+  margin-bottom: 5px;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #0006;
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
+
+.sidebar.show {
+    left: 0;
 }
 
 .phone-number {
@@ -45,37 +80,76 @@ body {
   align-items: center;
   gap: 15px;
   margin-bottom: 20px;
-
-  input {
-    flex: 1;
-    padding: 10px;
-    font-size: 0.9rem;
-    width: 80%;
-    max-width: 300px;
-    border-radius: 5px;
-    border: none;
-    margin: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  button {
-    flex-shrink: 0;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: 1px solid #4dff00;
-    border-radius: 5px;
-    background-color: var(--button-bg);
-    color: var(--text-color);
-    cursor: pointer;
-    transition: 1s;
-
-    &:hover {
-      transform: scale(1.1);
-      box-shadow: 5px 5px 25px #4dff00;
-      border-radius: 15px;
-    }
-  }
 }
+
+.input-area input {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.9rem;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-area button {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 1px solid #4dff00;
+  border-radius: 5px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: 1s;
+}
+
+.input-area button:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 5px 5px 25px #4dff00;
+  border-radius: 15px;
+}
+
+.saw__numbers{
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.saw__numbers:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 5px 5px 25px #fff;
+  border-radius: 15px;
+}
+
+.close__numbers{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 15px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.close__numbers:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 5px 5px 25px #fff;
+  border-radius: 15px;
+}
+
 
 .mode-toggle {
   position: absolute;
@@ -88,12 +162,12 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: 1s;
+}
 
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 5px 5px 25px #fff;
-    border-radius: 15px;
-  }
+.mode-toggle:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 5px 5px 25px #fff;
+  border-radius: 15px;
 }
 
 .reset-button {
@@ -106,37 +180,23 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: 1s;
-
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 5px 5px 25px #f21414;
-    border-radius: 15px;
-  }
 }
 
-.phone-numbers-list {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  max-height: 80vh;
-  overflow-y: auto;
-  font-size: 0.9rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    margin-bottom: 5px;
-  }
+.reset-button:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 5px 5px 25px #f21414;
+  border-radius: 15px;
 }
+
+body.dark-mode {
+  --bg-color: #222;
+  --text-color: #f0f0f0;
+  --button-bg: #555;
+  --button-hover: #777;
+  --circle-color: #ddd;
+  --circle-hover: #bbb;
+}
+
 
 .btn {
   margin-top: 20px;
@@ -146,13 +206,14 @@ body {
   border: 1px solid #4dff00;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, 1s;
+  transition: background-color 0.3s, color 0.3s;
+  transition: 1s;
+}
 
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 5px 5px 25px #4dff00;
-    border-radius: 15px;
-  }
+.btn:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 5px 5px 25px #4dff00;
+  border-radius: 15px;
 }
 
 @media (max-width: 768px) {
@@ -168,12 +229,12 @@ body {
   .input-area {
     flex-direction: column;
     align-items: stretch;
+  }
 
-    input,
-    button {
-      width: 100%;
-      margin: 5px 0;
-    }
+  .input-area input,
+  .input-area button {
+    width: 100%;
+    margin: 5px 0;
   }
 }
 
