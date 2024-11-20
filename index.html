@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Phone Number Selector</title>
+    <link rel="stylesheet" href="./css/style.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <button class="mode-toggle" id="mode-toggle">Dark Mode</button>
+      <div class="phone-number" id="phone-number">+998 00 000 00 00</div>
+      <div class="input-area">
+        <input
+          type="text"
+          id="phone-input"
+          placeholder="Enter phone number (e.g. +998 00 123 45 67)"
+        />
+        <button onclick="addPhoneNumber()">Add</button>
+      </div>
+      <button class="btn">Go</button>
+      <button class="reset-button" id="reset-button">Reset Phone Numbers</button>
+
+      <div class="phone-numbers-list" id="phone-numbers-list"></div>
+
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
